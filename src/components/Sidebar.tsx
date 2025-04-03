@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft } from 'lucide-react';
+import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Sidebar = () => {
@@ -41,6 +41,7 @@ const Sidebar = () => {
 
       <div className="mt-6">
         <SidebarItem icon={Home} text="Dashboard" active={true} collapsed={collapsed} />
+        <SidebarItem icon={Flag} text="Campanhas" collapsed={collapsed} />
         <SidebarItem icon={BarChart2} text="Analytics" collapsed={collapsed} />
         <SidebarItem icon={ShoppingBag} text="Produtos" collapsed={collapsed} />
         <SidebarItem icon={Users} text="Clientes" collapsed={collapsed} />
