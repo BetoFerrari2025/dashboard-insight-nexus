@@ -6,14 +6,18 @@ const SummaryFilters = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <div className="w-full">
-        <Select defaultValue="all">
+        <Select defaultValue="today">
           <SelectTrigger className="w-full">
-            <SelectValue placeholder="Conta de Anúncio" />
+            <SelectValue placeholder="Período" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Qualquer</SelectItem>
-            <SelectItem value="facebook">Facebook Ads</SelectItem>
-            <SelectItem value="google">Google Ads</SelectItem>
+            <SelectItem value="today">Hoje</SelectItem>
+            <SelectItem value="yesterday">Ontem</SelectItem>
+            <SelectItem value="7days">Últimos 7 dias</SelectItem>
+            <SelectItem value="14days">Últimos 14 dias</SelectItem>
+            <SelectItem value="1month">Último mês</SelectItem>
+            <SelectItem value="max">Período máximo</SelectItem>
+            <SelectItem value="custom">Personalizado</SelectItem>
           </SelectContent>
         </Select>
       </div>
