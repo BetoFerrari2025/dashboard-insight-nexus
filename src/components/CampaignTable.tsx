@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell, TableFooter } from '@/components/ui/table';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Info } from 'lucide-react';
@@ -81,6 +82,7 @@ export const CampaignTable = () => {
       roas: '1,44',
       margin: '30,47%'
     },
+    // Add more campaign data for demonstrating scrolling
     {
       id: '5',
       name: 'ARTE SACRA/ CBO [15/03/25]',
@@ -126,6 +128,7 @@ export const CampaignTable = () => {
     },
   ]);
 
+  // Total row calculation
   const totalRow = {
     budget: 'R$ 316,00',
     expenses: 'R$ 197,06',
@@ -138,6 +141,7 @@ export const CampaignTable = () => {
     margin: '18,90%'
   };
 
+  // Toggle campaign status
   const toggleCampaignStatus = (id: string) => {
     setCampaigns(
       campaigns.map(campaign => 
@@ -148,69 +152,11 @@ export const CampaignTable = () => {
     );
   };
 
-  const headerScrollRef = useRef<HTMLDivElement>(null);
-  const bodyScrollRef = useRef<HTMLDivElement>(null);
-  const footerScrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleBodyScroll = () => {
-      if (bodyScrollRef.current && headerScrollRef.current) {
-        headerScrollRef.current.scrollLeft = bodyScrollRef.current.scrollLeft;
-      }
-      if (bodyScrollRef.current && footerScrollRef.current) {
-        footerScrollRef.current.scrollLeft = bodyScrollRef.current.scrollLeft;
-      }
-    };
-
-    const handleHeaderScroll = () => {
-      if (headerScrollRef.current && bodyScrollRef.current) {
-        bodyScrollRef.current.scrollLeft = headerScrollRef.current.scrollLeft;
-      }
-      if (headerScrollRef.current && footerScrollRef.current) {
-        footerScrollRef.current.scrollLeft = headerScrollRef.current.scrollLeft;
-      }
-    };
-
-    const handleFooterScroll = () => {
-      if (footerScrollRef.current && bodyScrollRef.current) {
-        bodyScrollRef.current.scrollLeft = footerScrollRef.current.scrollLeft;
-      }
-      if (footerScrollRef.current && headerScrollRef.current) {
-        headerScrollRef.current.scrollLeft = footerScrollRef.current.scrollLeft;
-      }
-    };
-
-    const bodyScrollElement = bodyScrollRef.current;
-    const headerScrollElement = headerScrollRef.current;
-    const footerScrollElement = footerScrollRef.current;
-
-    if (bodyScrollElement) {
-      bodyScrollElement.addEventListener('scroll', handleBodyScroll);
-    }
-    if (headerScrollElement) {
-      headerScrollElement.addEventListener('scroll', handleHeaderScroll);
-    }
-    if (footerScrollElement) {
-      footerScrollElement.addEventListener('scroll', handleFooterScroll);
-    }
-
-    return () => {
-      if (bodyScrollElement) {
-        bodyScrollElement.removeEventListener('scroll', handleBodyScroll);
-      }
-      if (headerScrollElement) {
-        headerScrollElement.removeEventListener('scroll', handleHeaderScroll);
-      }
-      if (footerScrollElement) {
-        footerScrollElement.removeEventListener('scroll', handleFooterScroll);
-      }
-    };
-  }, []);
-
   return (
     <div className="border rounded-md">
-      <div className="overflow-x-auto" ref={headerScrollRef}>
-        <div className="min-w-[1200px]">
+      {/* Main scrollable area for the table rows */}
+      <ScrollArea className="h-[480px]">
+        <div className="min-w-[1200px]"> {/* Enforce minimum width to enable horizontal scrolling */}
           <Table>
             <TableHeader>
               <TableRow className="bg-gray-50">
@@ -242,13 +188,6 @@ export const CampaignTable = () => {
                 </TableCell>
               </TableRow>
             </TableHeader>
-          </Table>
-        </div>
-      </div>
-      
-      <div className="overflow-y-auto h-[400px] overflow-x-auto" ref={bodyScrollRef}>
-        <div className="min-w-[1200px]">
-          <Table>
             <TableBody>
               {campaigns.map((campaign) => (
                 <TableRow key={campaign.id} className="border-b">
@@ -291,10 +230,11 @@ export const CampaignTable = () => {
             </TableBody>
           </Table>
         </div>
-      </div>
+      </ScrollArea>
       
-      <div className="border-t overflow-x-auto" ref={footerScrollRef}>
-        <div className="min-w-[1200px]">
+      {/* Fixed footer with totals and horizontal scroll */}
+      <div className="border-t overflow-x-auto">
+        <div className="min-w-[1200px]"> {/* Match the width with the table above */}
           <Table>
             <TableBody>
               <TableRow className="bg-gray-50 font-medium">

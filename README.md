@@ -1,4 +1,4 @@
-# Olá Esse é meu prrimeiro project
+# Welcome to your Lovable project
 
 ## Project info
 
