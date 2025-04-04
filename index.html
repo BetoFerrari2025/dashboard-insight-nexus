@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Conteúdo do Repositório</title>
-    <style>
-        body { font-family: Arial; padding: 20px; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 10px 0; }
-        a { color: #0366d6; text-decoration: none; }
-    </style>
+    <title>Listagem Automática</title>
+    <script>
+        // Substitua pelo nome do seu repositório e pasta!
+        const repo = 'borderrar2025.github.io/dashboard-insight-nexus/';
+        const pasta = 'dados'; // Nome da pasta que quer listar
+
+        fetch(`https://api.github.com/repos/borderrar2025/dashboard-insight-nexus/contents/${pasta}`)
+            .then(response => response.json())
+            .then(data => {
+                const lista = document.getElementById('arquivos');
+                data.forEach(item => {
+                    lista.innerHTML += `<li><a href="${repo}${pasta}/${item.name}">${item.name}</a></li>`;
+                });
+            });
+    </script>
 </head>
 <body>
-    <h1>📁 Conteúdo do Repositório</h1>
-    <ul>
-        <li><a href="/dashboard-insight-nexus/documentos/relatorio.pdf" download>📄 Relatório (PDF)</a></li>
-        <li><a href="/dashboard-insight-nexus/imagens/grafico.png">🖼️ Gráfico (PNG)</a></li>
-        <li><a href="/dashboard-insight-nexus/dados/dataset.csv" download>📊 Dataset (CSV)</a></li>
-    </ul>
+    <h1>Arquivos em "${pasta}":</h1>
+    <ul id="arquivos"></ul>
 </body>
 </html>
