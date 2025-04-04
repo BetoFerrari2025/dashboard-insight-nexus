@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listagem Automática</title>
-    <script>
-        // Substitua pelo nome do seu repositório e pasta!
-        const repo = 'borderrar2025.github.io/dashboard-insight-nexus/';
-        const pasta = 'dados'; // Nome da pasta que quer listar
-
-        fetch(`https://api.github.com/repos/borderrar2025/dashboard-insight-nexus/contents/${pasta}`)
-            .then(response => response.json())
-            .then(data => {
-                const lista = document.getElementById('arquivos');
-                data.forEach(item => {
-                    lista.innerHTML += `<li><a href="${repo}${pasta}/${item.name}">${item.name}</a></li>`;
-                });
-            });
-    </script>
+  <meta charset="utf-8">
+  <title>UTM.ify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .redirect-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+      display: inline-block;
+    }
+    .redirect-button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <h1>Arquivos em "${├── index.html
-├── imagens/
-│   └── grafico.png
-└── documentos/
-    └── relatorio.pdf}":</h1>
-    <ul id="arquivos"></ul>
+  <h1>UTM.ify</h1>
+  <p>Gerador de URLs com parâmetros UTM para campanhas de marketing.</p>
+  
+  <a href="#" id="redirectLink" class="redirect-button">
+    Clique para continuar
+  </a>
+
+  <script>
+    document.getElementById("redirectLink").addEventListener("click", function(e) {
+      e.preventDefault(); // Evita o comportamento padrão do link
+      
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      var newUrl = l.protocol + '//' + l.hostname + 
+                  (l.port ? ':' + l.port : '') +
+                  l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+                  '/?/' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/')
+                  .replace(/&/g, '~and~') +
+                  (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+                  l.hash;
+      
+      window.location.replace(newUrl);
+    });
+  </script>
 </body>
 </html>
