@@ -1,0 +1,60 @@
+
+export const campaignData = [
+  { 
+    id: '1',
+    name: 'ILUSTRAR/ CBO - [01/04/25] img-08 – Cópia',
+    status: 'active',
+    budget: 'R$ 50,00 Diário',
+    expenses: 'R$ 41,45',
+    sales: 3,
+    roi: '2,04',
+    cpa: 'R$ 13,82',
+    revenue: 'R$ 84,70',
+    profit: 'R$ 43,25',
+    roas: '2,04',
+    margin: '51,06%'
+  },
+  { 
+    id: '2',
+    name: 'CATEQUESE/ CBO [01/04/25] – Cópia',
+    status: 'active',
+    budget: 'R$ 20,00 Diário',
+    expenses: 'R$ 14,78',
+    sales: 2,
+    roi: '4,19',
+    cpa: 'R$ 7,39',
+    revenue: 'R$ 61,90',
+    profit: 'R$ 47,12',
+    roas: '4,19',
+    margin: '76,12%'
+  },
+  { 
+    id: '3',
+    name: 'LIMPEZA/ CBO [01/03/25] IMG-01Mpago',
+    status: 'active',
+    budget: 'R$ 14,00 Diário',
+    expenses: 'R$ 8,88',
+    sales: 1,
+    roi: '2,90',
+    cpa: 'R$ 8,88',
+    revenue: 'R$ 25,78',
+    profit: 'R$ 16,90',
+    roas: '2,90',
+    margin: '65,55%',
+    isTracking: true
+  },
+  { 
+    id: '4',
+    name: 'ILUSTRA/ ABO TESTE [25/03/25]',
+    status: 'active',
+    budget: 'N/A',
+    expenses: 'R$ 28,37',
+    sales: 1,
+    roi: '1,44',
+    cpa: 'R$ 28,37',
+    revenue: 'R$ 40,80',
+    profit: 'R$ 12,43',
+    roas: '1,44',
+    margin: '30,47%'
+  },
+];

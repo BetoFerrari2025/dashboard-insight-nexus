@@ -2,9 +2,11 @@
 import React from 'react';
 import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = React.useState(false);
+  const location = useLocation();
 
   return (
     <div className={cn(
@@ -40,12 +42,48 @@ const Sidebar = () => {
       </div>
 
       <div className="mt-6">
-        <SidebarItem icon={Home} text="Dashboard" active={true} collapsed={collapsed} />
-        <SidebarItem icon={Flag} text="Campanhas" collapsed={collapsed} />
-        <SidebarItem icon={BarChart2} text="Analytics" collapsed={collapsed} />
-        <SidebarItem icon={ShoppingBag} text="Produtos" collapsed={collapsed} />
-        <SidebarItem icon={Users} text="Clientes" collapsed={collapsed} />
-        <SidebarItem icon={Settings} text="Configurações" collapsed={collapsed} />
+        <SidebarItem 
+          icon={Home} 
+          text="Dashboard" 
+          to="/" 
+          active={location.pathname === '/'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Flag} 
+          text="Campanhas" 
+          to="/campaigns" 
+          active={location.pathname === '/campaigns'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={BarChart2} 
+          text="Analytics" 
+          to="/analytics" 
+          active={location.pathname === '/analytics'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={ShoppingBag} 
+          text="Produtos" 
+          to="/products" 
+          active={location.pathname === '/products'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Users} 
+          text="Clientes" 
+          to="/customers" 
+          active={location.pathname === '/customers'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Settings} 
+          text="Configurações" 
+          to="/settings" 
+          active={location.pathname === '/settings'} 
+          collapsed={collapsed} 
+        />
       </div>
     </div>
   );
@@ -54,19 +92,20 @@ const Sidebar = () => {
 interface SidebarItemProps {
   icon: React.FC<any>;
   text: string;
+  to: string;
   active?: boolean;
   collapsed?: boolean;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, active = false, collapsed = false }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to, active = false, collapsed = false }) => {
   return (
-    <div className={cn(
+    <Link to={to} className={cn(
       "flex items-center px-4 py-3 cursor-pointer transition-colors",
       active ? "bg-blue-600" : "hover:bg-gray-700"
     )}>
       <Icon className="h-5 w-5" />
       {!collapsed && <span className="ml-3">{text}</span>}
-    </div>
+    </Link>
   );
 };
 

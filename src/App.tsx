@@ -8,6 +8,7 @@ import { useState } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Dashboard from "@/pages/Dashboard";
+import Campaigns from "@/pages/Campaigns";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import NotFound from "./pages/NotFound";
@@ -32,6 +33,11 @@ const App = () => {
               <Route path="/" element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              } />
+              <Route path="/campaigns" element={
+                <ProtectedRoute>
+                  <Campaigns />
                 </ProtectedRoute>
               } />
               
