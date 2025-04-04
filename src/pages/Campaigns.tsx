@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { CampaignTable } from '@/components/CampaignTable';
 import { Search, RefreshCw, Settings, ChevronUp, FileText } from 'lucide-react';
-import { campaignData } from '@/data/campaignData';
+import { Separator } from '@/components/ui/separator';
 
 const Campaigns = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -135,6 +135,8 @@ const Campaigns = () => {
           </Select>
         </div>
       </div>
+      
+      <Separator className="my-4" />
 
       {/* Campaign Table */}
       <div className="mt-6">

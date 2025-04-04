@@ -4,6 +4,7 @@ import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Info } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type Campaign = {
   id: string;
@@ -81,6 +82,50 @@ export const CampaignTable = () => {
       roas: '1,44',
       margin: '30,47%'
     },
+    // Add more campaign data for demonstrating scrolling
+    {
+      id: '5',
+      name: 'ARTE SACRA/ CBO [15/03/25]',
+      status: 'paused',
+      budget: 'R$ 30,00 Diário',
+      expenses: 'R$ 27,50',
+      sales: 2,
+      roi: '2,30',
+      cpa: 'R$ 13,75',
+      revenue: 'R$ 63,25',
+      profit: 'R$ 35,75',
+      roas: '2,30',
+      margin: '56,52%'
+    },
+    {
+      id: '6',
+      name: 'LIMPEZA VERDE/ CBO [10/03/25]',
+      status: 'active',
+      budget: 'R$ 25,00 Diário',
+      expenses: 'R$ 22,80',
+      sales: 2,
+      roi: '2,76',
+      cpa: 'R$ 11,40',
+      revenue: 'R$ 62,90',
+      profit: 'R$ 40,10',
+      roas: '2,76',
+      margin: '63,75%',
+      isTracking: true
+    },
+    {
+      id: '7',
+      name: 'CRISTO REI/ CBO [05/03/25]',
+      status: 'active',
+      budget: 'R$ 22,00 Diário',
+      expenses: 'R$ 19,70',
+      sales: 1,
+      roi: '1,85',
+      cpa: 'R$ 19,70',
+      revenue: 'R$ 36,45',
+      profit: 'R$ 16,75',
+      roas: '1,85',
+      margin: '45,95%'
+    },
   ]);
 
   // Total row calculation
@@ -108,95 +153,103 @@ export const CampaignTable = () => {
   };
 
   return (
-    <div className="border rounded-md overflow-auto">
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-gray-50">
-            <TableCell className="w-10">
-              <Checkbox />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600">STATUS</TableCell>
-            <TableCell className="font-medium text-xs text-gray-600">CAMPANHA</TableCell>
-            <TableCell className="font-medium text-xs text-gray-600">ORÇAMENTO</TableCell>
-            <TableCell className="font-medium text-xs text-gray-600">GASTOS</TableCell>
-            <TableCell className="font-medium text-xs text-gray-600">VENDAS</TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              ROI <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              CPA <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              FATURAMENTO <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              LUCRO <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              ROAS <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-            <TableCell className="font-medium text-xs text-gray-600 flex items-center">
-              MARGEM <Info className="h-4 w-4 ml-1 text-gray-400" />
-            </TableCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {campaigns.map((campaign) => (
-            <TableRow key={campaign.id} className="border-b">
-              <TableCell>
+    <div className="border rounded-md">
+      <ScrollArea className="h-[480px]">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-50">
+              <TableCell className="w-10 sticky top-0 bg-gray-50 z-10">
                 <Checkbox />
               </TableCell>
-              <TableCell>
-                <div className="flex justify-center">
-                  <Switch 
-                    checked={campaign.status === 'active'} 
-                    onCheckedChange={() => toggleCampaignStatus(campaign.id)}
-                    className="data-[state=checked]:bg-blue-500"
-                  />
-                </div>
+              <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">STATUS</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">CAMPANHA</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">ORÇAMENTO</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">GASTOS</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">VENDAS</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                ROI <Info className="h-4 w-4 ml-1 text-gray-400" />
               </TableCell>
-              <TableCell>
-                <div className="flex flex-col">
-                  <span className="font-medium text-sm">{campaign.name}</span>
-                  {campaign.isTracking && (
-                    <span className="inline-flex text-xs text-green-600 items-center mt-1">
-                      <span className="h-2 w-2 bg-green-500 rounded-full mr-1"></span>
-                      LIMPEZA
-                    </span>
-                  )}
-                </div>
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                CPA <Info className="h-4 w-4 ml-1 text-gray-400" />
               </TableCell>
-              <TableCell>{campaign.budget}</TableCell>
-              <TableCell>{campaign.expenses}</TableCell>
-              <TableCell className="text-center">{campaign.sales}</TableCell>
-              <TableCell className={campaign.roi >= '2.0' ? 'text-green-500' : ''}>{campaign.roi}</TableCell>
-              <TableCell>{campaign.cpa}</TableCell>
-              <TableCell>{campaign.revenue}</TableCell>
-              <TableCell className={parseFloat(campaign.profit.replace('R$ ', '').replace(',', '.')) > 0 ? 'text-green-500' : ''}>
-                {campaign.profit}
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                FATURAMENTO <Info className="h-4 w-4 ml-1 text-gray-400" />
               </TableCell>
-              <TableCell className={campaign.roas >= '2.0' ? 'text-green-500' : ''}>{campaign.roas}</TableCell>
-              <TableCell className="text-green-500">{campaign.margin}</TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                LUCRO <Info className="h-4 w-4 ml-1 text-gray-400" />
+              </TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                ROAS <Info className="h-4 w-4 ml-1 text-gray-400" />
+              </TableCell>
+              <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10">
+                MARGEM <Info className="h-4 w-4 ml-1 text-gray-400" />
+              </TableCell>
             </TableRow>
-          ))}
-
-          {/* Totals row */}
-          <TableRow className="bg-gray-50 font-medium">
-            <TableCell></TableCell>
-            <TableCell className="text-gray-600">N/A</TableCell>
-            <TableCell className="text-gray-600">38 CAMPANHAS</TableCell>
-            <TableCell>{totalRow.budget}</TableCell>
-            <TableCell>{totalRow.expenses}</TableCell>
-            <TableCell className="text-center">{totalRow.sales}</TableCell>
-            <TableCell className="text-green-500">{totalRow.roi}</TableCell>
-            <TableCell>{totalRow.cpa}</TableCell>
-            <TableCell>{totalRow.revenue}</TableCell>
-            <TableCell className="text-green-500">{totalRow.profit}</TableCell>
-            <TableCell className="text-green-500">{totalRow.roas}</TableCell>
-            <TableCell className="text-green-500">{totalRow.margin}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {campaigns.map((campaign) => (
+              <TableRow key={campaign.id} className="border-b">
+                <TableCell>
+                  <Checkbox />
+                </TableCell>
+                <TableCell>
+                  <div className="flex justify-center">
+                    <Switch 
+                      checked={campaign.status === 'active'} 
+                      onCheckedChange={() => toggleCampaignStatus(campaign.id)}
+                      className="data-[state=checked]:bg-blue-500"
+                    />
+                  </div>
+                </TableCell>
+                <TableCell>
+                  <div className="flex flex-col">
+                    <span className="font-medium text-sm">{campaign.name}</span>
+                    {campaign.isTracking && (
+                      <span className="inline-flex text-xs text-green-600 items-center mt-1">
+                        <span className="h-2 w-2 bg-green-500 rounded-full mr-1"></span>
+                        LIMPEZA
+                      </span>
+                    )}
+                  </div>
+                </TableCell>
+                <TableCell>{campaign.budget}</TableCell>
+                <TableCell>{campaign.expenses}</TableCell>
+                <TableCell className="text-center">{campaign.sales}</TableCell>
+                <TableCell className={campaign.roi >= '2.0' ? 'text-green-500' : ''}>{campaign.roi}</TableCell>
+                <TableCell>{campaign.cpa}</TableCell>
+                <TableCell>{campaign.revenue}</TableCell>
+                <TableCell className={parseFloat(campaign.profit.replace('R$ ', '').replace(',', '.')) > 0 ? 'text-green-500' : ''}>
+                  {campaign.profit}
+                </TableCell>
+                <TableCell className={campaign.roas >= '2.0' ? 'text-green-500' : ''}>{campaign.roas}</TableCell>
+                <TableCell className="text-green-500">{campaign.margin}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </ScrollArea>
+      
+      {/* Fixed footer with totals */}
+      <div className="border-t">
+        <Table>
+          <TableBody>
+            <TableRow className="bg-gray-50 font-medium">
+              <TableCell></TableCell>
+              <TableCell className="text-gray-600">N/A</TableCell>
+              <TableCell className="text-gray-600">38 CAMPANHAS</TableCell>
+              <TableCell>{totalRow.budget}</TableCell>
+              <TableCell>{totalRow.expenses}</TableCell>
+              <TableCell className="text-center">{totalRow.sales}</TableCell>
+              <TableCell className="text-green-500">{totalRow.roi}</TableCell>
+              <TableCell>{totalRow.cpa}</TableCell>
+              <TableCell>{totalRow.revenue}</TableCell>
+              <TableCell className="text-green-500">{totalRow.profit}</TableCell>
+              <TableCell className="text-green-500">{totalRow.roas}</TableCell>
+              <TableCell className="text-green-500">{totalRow.margin}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
