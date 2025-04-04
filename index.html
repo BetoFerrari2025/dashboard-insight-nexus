@@ -28,6 +28,240 @@
   <h1>UTM.ify</h1>
   <p>Gerador de URLs com parâmetros UTM para campanhas de marketing.</p>
   
+  
+import React from 'react';
+import Sidebar from '@/components/Sidebar';
+import KpiCard from '@/components/KpiCard';
+import DateSelector from '@/components/DateSelector';
+import ChartContainer from '@/components/ChartContainer';
+import CampaignTable from '@/components/CampaignTable';
+import PaymentChart from '@/components/PaymentChart';
+import SummaryFilters from '@/components/SummaryFilters';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { kpiData, visitsChartData, trafficSourcesData, campaignData } from '@/data/dashboardData';
+
+const Index = () => {
+  const lineChartOptions = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          drawBorder: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  };
+
+  const doughnutChartOptions = {
+    plugins: {
+      legend: {
+        position: 'right' as const,
+        labels: {
+          usePointStyle: true,
+          pointStyle: 'circle',
+          padding: 20,
+        },
+      },
+    },
+    cutout: '70%',
+  };
+
+  return (
+    <div className="flex h-screen bg-gray-50">
+      <Sidebar />
+      
+      <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-2xl font-bold text-marketing-dark">Resumo</h1>
+          <DateSelector />
+        </div>
+
+        {/* Summary Filters */}
+        <SummaryFilters />
+        
+        {/* Main Metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Faturamento Líquido</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 314,38</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Gastos com anúncios</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 271,24</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">ROAS</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-green-500">1.16</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Lucro</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-green-500">R$ 43,14</p>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* Second row metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+          <div className="lg:col-span-1">
+            <PaymentChart />
+          </div>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Vendas Pendentes</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 44,70</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Margem</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-green-500">13.7%</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">CPA</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 13,56</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Third row metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Custos de Produto</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 0,40</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">ROI</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold text-green-500">1.16</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">ARPU</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">R$ 15,72</p>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* Conversion Funnel and Products */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm text-gray-500">Funil de Conversão (Meta Ads)</CardTitle>
+            </CardHeader>
+            <CardContent className="h-72">
+              <div id="funnel-chart" className="w-full h-full"></div>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white shadow-sm">
+            <CardHeader className="pb-2">
+              <CardTitle className="flex justify-between items-center">
+                <span className="text-sm text-gray-500">Vendas por Produto</span>
+                <span className="text-xs text-gray-400">(clique para filtrar)</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                    <span className="text-sm">Bíblia para colorir Combo 2 em 1</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium">11</span>
+                    <div className="w-20 bg-gray-200 rounded-full h-2">
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: '44%' }}></div>
+                    </div>
+                    <span className="text-xs text-gray-500">44.0%</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                    <span className="text-sm">Bíblia para colorir</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium">4</span>
+                    <div className="w-20 bg-gray-200 rounded-full h-2">
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: '16%' }}></div>
+                    </div>
+                    <span className="text-xs text-gray-500">16.0%</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                    <span className="text-sm">FABRICA LIMPEZA LUCRATIVA - UP</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm font-medium">2</span>
+                    <div className="w-20 bg-gray-200 rounded-full h-2">
+                      <div className="bg-blue-500 h-2 rounded-full" style={{ width: '8%' }}></div>
+                    </div>
+                    <span className="text-xs text-gray-500">8.0%</span>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
+
   <a href="#" id="redirectLink" class="redirect-button">
     Clique para continuar
   </a>
