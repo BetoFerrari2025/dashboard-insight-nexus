@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import { useState } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
@@ -17,13 +17,20 @@ const App = () => {
   // Move queryClient inside the component to fix the hooks error
   const [queryClient] = useState(() => new QueryClient());
 
+  // Determine if we should use HashRouter instead of BrowserRouter
+  // GitHub Pages works better with HashRouter
+  const isGitHubPages = window.location.hostname.includes('github.io');
+  
+  // Choose the appropriate router component
+  const Router = isGitHubPages ? HashRouter : BrowserRouter;
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <Router>
             <Routes>
               {/* Public routes */}
               <Route path="/login" element={<Login />} />
@@ -44,7 +51,7 @@ const App = () => {
               {/* Redirect to login for undefined routes */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
         </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>
