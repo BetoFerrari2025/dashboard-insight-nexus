@@ -1,12 +1,34 @@
 
 import React from 'react';
-import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag } from 'lucide-react';
+import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = React.useState(false);
   const location = useLocation();
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkIsAdmin = async () => {
+      if (!user) return;
+
+      try {
+        const { data, error } = await supabase
+          .rpc('is_admin', { user_id: user.id });
+
+        if (error) throw error;
+        setIsAdmin(data || false);
+      } catch (error) {
+        console.error('Erro ao verificar status de administrador:', error);
+      }
+    };
+
+    checkIsAdmin();
+  }, [user]);
 
   return (
     <div className={cn(
@@ -77,6 +99,17 @@ const Sidebar = () => {
           active={location.pathname === '/customers'} 
           collapsed={collapsed} 
         />
+        
+        {isAdmin && (
+          <SidebarItem 
+            icon={Shield} 
+            text="Administração" 
+            to="/admin" 
+            active={location.pathname === '/admin'} 
+            collapsed={collapsed} 
+          />
+        )}
+        
         <SidebarItem 
           icon={Settings} 
           text="Configurações" 
