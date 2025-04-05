@@ -13,7 +13,7 @@ import { ArrowDown, ArrowUp, Info } from 'lucide-react';
 
 const Dashboard = () => {
   return (
-    <>
+    <DashboardLayout>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-marketing-dark">Resumo</h1>
         <div className="flex items-center gap-2">
@@ -182,16 +182,8 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 mb-6">
         <ApprovalRateCard />
       </div>
-    </>
-  );
-};
-
-const DashboardPage = () => {
-  return (
-    <DashboardLayout>
-      <Dashboard />
     </DashboardLayout>
   );
 };
 
-export default DashboardPage;
+export default Dashboard;

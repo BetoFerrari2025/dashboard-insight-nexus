@@ -12,6 +12,7 @@ import Campaigns from "@/pages/Campaigns";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 const App = () => {
   // Move queryClient inside the component to fix the hooks error
@@ -38,6 +39,11 @@ const App = () => {
               
               {/* Protected routes */}
               <Route path="/" element={
+                <ProtectedRoute>
+                  <Index />
+                </ProtectedRoute>
+              } />
+              <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />
                 </ProtectedRoute>
