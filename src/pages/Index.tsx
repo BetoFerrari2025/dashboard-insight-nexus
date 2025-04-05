@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
 import DateSelector from '@/components/DateSelector';
 import SummaryFilters from '@/components/SummaryFilters';
@@ -7,10 +9,15 @@ import FunnelChart from '@/components/FunnelChart';
 import ProductSalesChart from '@/components/ProductSalesChart';
 import ApprovalRateCard from '@/components/ApprovalRateCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { kpiData } from '@/data/dashboardData';
-import { ArrowDown, ArrowUp, Info } from 'lucide-react';
+import { ArrowDown, ArrowUp, Info, Shield } from 'lucide-react';
+import { usePermissions } from '@/hooks/usePermissions';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const { isAdmin } = usePermissions();
+
   return (
     <>
       <div className="flex justify-between items-center mb-8">
@@ -22,6 +29,19 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
+
+      {/* Admin Quick Access Button */}
+      {isAdmin && (
+        <div className="mb-6">
+          <Button 
+            className="bg-amber-600 hover:bg-amber-700 text-white" 
+            onClick={() => navigate('/admin')}
+          >
+            <Shield className="mr-2 h-4 w-4" />
+            Acessar Painel de Administração
+          </Button>
+        </div>
+      )}
 
       {/* Summary Filters */}
       <SummaryFilters />
