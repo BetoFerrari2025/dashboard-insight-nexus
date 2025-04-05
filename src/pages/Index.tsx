@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '@/components/DashboardLayout';
@@ -13,13 +12,12 @@ import { Button } from '@/components/ui/button';
 import { kpiData } from '@/data/dashboardData';
 import { ArrowDown, ArrowUp, Info, Shield } from 'lucide-react';
 import { usePermissions } from '@/hooks/usePermissions';
-
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { isAdmin } = usePermissions();
-
-  return (
-    <>
+  const {
+    isAdmin
+  } = usePermissions();
+  return <>
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-marketing-dark">Resumo</h1>
         <div className="flex items-center gap-2">
@@ -31,17 +29,12 @@ const Dashboard = () => {
       </div>
 
       {/* Admin Quick Access Button */}
-      {isAdmin && (
-        <div className="mb-6">
-          <Button 
-            className="bg-amber-600 hover:bg-amber-700 text-white" 
-            onClick={() => navigate('/admin')}
-          >
+      {isAdmin && <div className="mb-6">
+          <Button className="bg-amber-600 hover:bg-amber-700 text-white" onClick={() => navigate('/admin')}>
             <Shield className="mr-2 h-4 w-4" />
             Acessar Painel de Administração
           </Button>
-        </div>
-      )}
+        </div>}
 
       {/* Summary Filters */}
       <SummaryFilters />
@@ -52,7 +45,7 @@ const Dashboard = () => {
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
             <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
               Faturamento Líquido
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 Esse \xE9 o valor total faturado hoje" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -201,16 +194,11 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 mb-6">
         <ApprovalRateCard />
       </div>
-    </>
-  );
+    </>;
 };
-
 const Index = () => {
-  return (
-    <DashboardLayout>
+  return <DashboardLayout>
       <Dashboard />
-    </DashboardLayout>
-  );
+    </DashboardLayout>;
 };
-
 export default Index;
