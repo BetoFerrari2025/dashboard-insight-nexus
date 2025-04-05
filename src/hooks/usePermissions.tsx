@@ -3,6 +3,16 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 
+// Definindo a interface para os dados da permissão do sistema
+interface SystemPermission {
+  id: string;
+  name: string;
+  description: string | null;
+  enabled: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 export function usePermissions() {
   const { user } = useAuth();
   const [permissions, setPermissions] = useState<Record<string, boolean>>({});

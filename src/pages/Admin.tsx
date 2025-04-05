@@ -9,14 +9,15 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Shield, AlertTriangle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
-type SystemPermission = {
+// Definindo a interface para os dados da permissão do sistema
+interface SystemPermission {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
   enabled: boolean;
   created_at: string;
   updated_at: string;
-};
+}
 
 const Admin = () => {
   const { user } = useAuth();

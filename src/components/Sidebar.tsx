@@ -4,31 +4,13 @@ import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag, Shiel
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
+import { usePermissions } from '@/hooks/usePermissions';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = React.useState(false);
   const location = useLocation();
   const { user } = useAuth();
-  const [isAdmin, setIsAdmin] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkIsAdmin = async () => {
-      if (!user) return;
-
-      try {
-        const { data, error } = await supabase
-          .rpc('is_admin', { user_id: user.id });
-
-        if (error) throw error;
-        setIsAdmin(data || false);
-      } catch (error) {
-        console.error('Erro ao verificar status de administrador:', error);
-      }
-    };
-
-    checkIsAdmin();
-  }, [user]);
+  const { isAdmin } = usePermissions();
 
   return (
     <div className={cn(
