@@ -37,23 +37,42 @@ const Admin = () => {
 
       try {
         // Verificar se o usuário atual é um administrador
-        const { data, error } = await supabase
-          .rpc('is_admin', { user_id: user.id });
+        // Correção: Verificar se o user.id é válido antes de fazer a chamada
+        if (user.id) {
+          const { data, error } = await supabase
+            .rpc('is_admin', { user_id: user.id });
 
-        if (error) throw error;
+          if (error) {
+            console.error('Erro ao verificar status de administrador:', error);
+            toast({
+              title: "Erro",
+              description: "Não foi possível verificar suas permissões de administrador.",
+              variant: "destructive"
+            });
+            setIsAdmin(false);
+          } else {
+            setIsAdmin(data || false);
 
-        setIsAdmin(data || false);
-
-        if (!data) {
+            if (!data) {
+              toast({
+                title: "Acesso restrito",
+                description: "Você não tem permissão para acessar esta página.",
+                variant: "destructive"
+              });
+              navigate('/');
+            } else {
+              // Carregar permissões do sistema
+              fetchPermissions();
+            }
+          }
+        } else {
+          console.error('ID de usuário inválido ou não encontrado');
           toast({
-            title: "Acesso restrito",
-            description: "Você não tem permissão para acessar esta página.",
+            title: "Erro",
+            description: "ID de usuário inválido ou não encontrado.",
             variant: "destructive"
           });
           navigate('/');
-        } else {
-          // Carregar permissões do sistema
-          fetchPermissions();
         }
       } catch (error) {
         console.error('Erro ao verificar status de administrador:', error);
@@ -78,7 +97,10 @@ const Admin = () => {
         .select('*')
         .order('name');
 
-      if (error) throw error;
+      if (error) {
+        console.error('Erro ao buscar permissões:', error);
+        throw error;
+      }
       setPermissions(data || []);
     } catch (error) {
       console.error('Erro ao buscar permissões:', error);

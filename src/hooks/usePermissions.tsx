@@ -29,26 +29,36 @@ export function usePermissions() {
 
       try {
         // Verificar se o usuário é admin
-        const { data: adminData, error: adminError } = await supabase
-          .rpc('is_admin', { user_id: user.id });
+        // Correção: Verificar se o user.id é válido antes de fazer a chamada
+        if (user.id) {
+          const { data: adminData, error: adminError } = await supabase
+            .rpc('is_admin', { user_id: user.id });
 
-        if (adminError) throw adminError;
-        setIsAdmin(adminData || false);
+          if (adminError) {
+            console.error('Erro ao verificar status de administrador:', adminError);
+          } else {
+            setIsAdmin(adminData || false);
+          }
 
-        // Buscar todas as permissões do sistema
-        const { data: permissionsData, error: permissionsError } = await supabase
-          .from('system_permissions')
-          .select('name, enabled');
+          // Buscar todas as permissões do sistema
+          const { data: permissionsData, error: permissionsError } = await supabase
+            .from('system_permissions')
+            .select('name, enabled');
 
-        if (permissionsError) throw permissionsError;
+          if (permissionsError) {
+            console.error('Erro ao buscar permissões do sistema:', permissionsError);
+          } else {
+            // Converter array de permissões para um objeto { nome: estado }
+            const permissionsMap = (permissionsData || []).reduce((acc, curr) => {
+              acc[curr.name] = curr.enabled;
+              return acc;
+            }, {} as Record<string, boolean>);
 
-        // Converter array de permissões para um objeto { nome: estado }
-        const permissionsMap = (permissionsData || []).reduce((acc, curr) => {
-          acc[curr.name] = curr.enabled;
-          return acc;
-        }, {} as Record<string, boolean>);
-
-        setPermissions(permissionsMap);
+            setPermissions(permissionsMap);
+          }
+        } else {
+          console.error('ID de usuário inválido ou não encontrado');
+        }
       } catch (error) {
         console.error('Erro ao buscar permissões:', error);
       } finally {
