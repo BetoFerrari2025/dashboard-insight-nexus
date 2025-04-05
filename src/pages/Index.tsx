@@ -1,7 +1,4 @@
-
 import React from 'react';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
-import Sidebar from '@/components/Sidebar';
 import DashboardLayout from '@/components/DashboardLayout';
 import DateSelector from '@/components/DateSelector';
 import SummaryFilters from '@/components/SummaryFilters';
@@ -189,19 +186,10 @@ const Dashboard = () => {
 };
 
 const Index = () => {
-  // Determine if we should use HashRouter instead of BrowserRouter
-  // GitHub Pages works better with HashRouter
-  const isGitHubPages = window.location.hostname.includes('github.io');
-  
-  // Choose the appropriate router component
-  const Router = isGitHubPages ? HashRouter : BrowserRouter;
-
   return (
-    <Router>
-      <DashboardLayout>
-        <Dashboard />
-      </DashboardLayout>
-    </Router>
+    <DashboardLayout>
+      <Dashboard />
+    </DashboardLayout>
   );
 };
 
