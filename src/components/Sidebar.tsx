@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div className={cn(
-      "h-screen bg-[#273149] dark:bg-[#1e2538] text-white transition-all duration-300",
+      "h-screen bg-[#273149] dark:bg-[#273149] text-white transition-all duration-300",
       collapsed ? "w-16" : "w-64"
     )}>
       <div className="p-4 flex items-center justify-between">
