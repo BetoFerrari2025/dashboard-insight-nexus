@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '@/components/Sidebar';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { LogOut, User } from 'lucide-react';
+import { LogOut, User, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/hooks/useTheme';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface DashboardLayoutProps {
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,23 +22,36 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Sidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="bg-white shadow-sm border-b">
+        <header className="bg-white dark:bg-[#1e2538] shadow-sm border-b dark:border-gray-700 transition-colors">
           <div className="flex justify-between items-center px-6 py-4">
-            <h1 className="text-xl font-semibold text-marketing-dark">UTM.ify</h1>
+            <h1 className="text-xl font-semibold text-marketing-dark dark:text-white">UTM.ify</h1>
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4 text-gray-500" />
-                <span className="text-sm font-medium">{user?.name}</span>
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-300 transition-colors"
+                  aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {theme === 'dark' ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </button>
+                <div className="flex items-center gap-2">
+                  <User className="h-4 w-4 text-gray-500 dark:text-gray-300" />
+                  <span className="text-sm font-medium dark:text-white">{user?.name}</span>
+                </div>
               </div>
               <Button 
                 variant="outline" 
                 size="sm" 
                 onClick={handleLogout}
-                className="flex items-center gap-1"
+                className="flex items-center gap-1 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
               >
                 <LogOut className="h-4 w-4" />
                 <span>Sair</span>
@@ -45,8 +60,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           </div>
         </header>
         
-        <main className="flex-1 overflow-y-auto p-6">
-          {children}
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900 transition-colors">
+          <div className="dark:text-white">
+            {children}
+          </div>
         </main>
       </div>
     </div>

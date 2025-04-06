@@ -1,18 +1,16 @@
 
 import React from 'react';
-import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag, Shield, Sun, Moon } from 'lucide-react';
+import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePermissions } from '@/hooks/usePermissions';
-import { useTheme } from '@/hooks/useTheme';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = React.useState(false);
   const location = useLocation();
   const { user } = useAuth();
   const { isAdmin } = usePermissions();
-  const { theme, setTheme } = useTheme();
 
   return (
     <div className={cn(
@@ -106,16 +104,6 @@ const Sidebar = () => {
           active={location.pathname === '/settings'} 
           collapsed={collapsed} 
         />
-
-        {/* Theme Toggle */}
-        <div className={cn(
-          "flex items-center px-4 py-3 cursor-pointer hover:bg-gray-700 transition-colors mt-4",
-          collapsed ? "justify-center" : "justify-between"
-        )}
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-          {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          {!collapsed && <span className="ml-3">{theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}</span>}
-        </div>
       </div>
     </div>
   );
