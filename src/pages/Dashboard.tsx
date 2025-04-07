@@ -37,7 +37,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.netRevenue}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.netRevenue}</p>
           </CardContent>
         </Card>
         
@@ -49,7 +49,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.adSpend}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.adSpend}</p>
           </CardContent>
         </Card>
         
@@ -92,7 +92,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.pendingOrders}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.pendingOrders}</p>
           </CardContent>
         </Card>
         
@@ -116,7 +116,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.cpa}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.cpa}</p>
           </CardContent>
         </Card>
       </div>
@@ -131,7 +131,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.productCosts}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.productCosts}</p>
           </CardContent>
         </Card>
         
@@ -155,7 +155,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.arpu}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.arpu}</p>
           </CardContent>
         </Card>
         
@@ -167,7 +167,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{kpiData.taxes}</p>
+            <p className="text-2xl font-bold dark:text-white">{kpiData.taxes}</p>
           </CardContent>
         </Card>
       </div>
