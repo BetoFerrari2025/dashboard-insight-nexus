@@ -12,7 +12,7 @@ const Landing = () => {
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center">
           <div className="w-40 h-10 bg-gray-200 rounded flex items-center justify-center text-gray-500">
-            Logo Utmify
+            Logo Trackify
           </div>
         </div>
         <div className="hidden md:flex space-x-4">
@@ -32,7 +32,7 @@ const Landing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Utmify - Rastreie suas vendas de forma precisa!
+              Trackify - Rastreie suas vendas de forma precisa!
             </h1>
             <p className="text-xl text-gray-600 mb-8">
               Rastreie suas vendas de forma precisa e escale 40% a mais, sem gastar mais dinheiro.
@@ -57,7 +57,7 @@ const Landing = () => {
       {/* Features Section */}
       <section className="container mx-auto px-4 py-16 bg-white">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Como o Utmify transforma seu marketing</h2>
+          <h2 className="text-3xl font-bold mb-4">Como o Trackify transforma seu marketing</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Nossa plataforma oferece todas as ferramentas necessárias para rastrear, analisar
             e otimizar suas campanhas de marketing.
@@ -111,7 +111,7 @@ const Landing = () => {
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Junte-se a milhares de profissionais de marketing que já transformaram
-            seu desempenho com Utmify.
+            seu desempenho com Trackify.
           </p>
           <Button size="lg" className="bg-white text-marketing-blue hover:bg-gray-100">
             Começar agora
@@ -158,7 +158,7 @@ const Landing = () => {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-            <p>© 2025 Utmify. Todos os direitos reservados.</p>
+            <p>© 2025 Trackify. Todos os direitos reservados.</p>
             {/* Área reservada para scripts de rastreamento */}
             <div id="tracking-scripts" className="hidden">
               {/* Scripts de rastreamento serão inseridos aqui */}
