@@ -8,9 +8,9 @@ const PaymentChart = () => {
   const COLORS = ['#0E65F5', '#17BECF', '#FFBB28', '#FF8042'];
   
   return (
-    <Card className="bg-white shadow-sm">
+    <Card className="bg-white dark:bg-[#273149] shadow-sm">
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm text-gray-500">Vendas por Pagamento</CardTitle>
+        <CardTitle className="text-sm text-gray-500 dark:text-gray-300">Vendas por Pagamento</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center">
         <div className="w-full h-[200px] relative">
@@ -30,8 +30,8 @@ const PaymentChart = () => {
                   <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value) => `${value}%`} />
-              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
+              <Tooltip formatter={(value) => `${value}%`} contentStyle={{ backgroundColor: 'rgba(39, 49, 73, 0.9)', border: 'none', color: 'white' }} />
+              <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="dark:fill-white">
                 <tspan x="50%" textAnchor="middle" className="text-xl font-semibold" dy="-10">
                   Total
                 </tspan>
@@ -49,7 +49,7 @@ const PaymentChart = () => {
                 className="h-3 w-3 rounded-full mr-2" 
                 style={{ backgroundColor: method.color || COLORS[index % COLORS.length] }}
               />
-              <span className="text-sm">{method.name}</span>
+              <span className="text-sm dark:text-gray-300">{method.name}</span>
             </div>
           ))}
         </div>
