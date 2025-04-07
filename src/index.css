@@ -53,13 +53,13 @@
   }
 
   .dark {
-    --background: 222 19% 22%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222 19% 22%;
+    --card: 222 47% 11%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 19% 22%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
@@ -105,3 +105,14 @@
 .tabs-underline [data-state="active"] {
   @apply border-b-2 border-blue-500;
 }
+
+/* Dark mode background for content area */
+.dark main {
+  background-color: #141f37;
+}
+
+/* Keep cards with their own background in dark mode */
+.dark .bg-\[\#273149\] {
+  background-color: #273149;
+}
+

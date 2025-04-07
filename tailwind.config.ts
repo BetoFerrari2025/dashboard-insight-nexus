@@ -68,7 +68,8 @@ export default {
 					blue: '#0E65F5',
 					green: '#17C964',
 				},
-                darkbg: '#273149'
+                darkbg: '#273149',
+                darkerbg: '#141f37'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -22,7 +22,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-[#273149] transition-colors">
+    <div className="flex h-screen bg-gray-50 dark:bg-[#141f37] transition-colors">
       <Sidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -60,7 +60,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           </div>
         </header>
         
-        <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-[#273149] transition-colors">
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-[#141f37] transition-colors">
           <div className="dark:text-white">
             {children}
           </div>
