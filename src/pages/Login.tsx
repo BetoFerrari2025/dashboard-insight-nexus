@@ -57,7 +57,7 @@ const Login = () => {
                 <span className="text-white font-bold text-xl">U</span>
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold">UTM.ify</CardTitle>
+            <CardTitle className="text-2xl font-bold">Trackify</CardTitle>
             <CardDescription>Faça login para acessar o painel</CardDescription>
           </CardHeader>
           <CardContent>
