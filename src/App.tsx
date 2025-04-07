@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Dashboard from "@/pages/Dashboard";
 import Campaigns from "@/pages/Campaigns";
+import Integrations from "@/pages/Integrations"; // Nova importação
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import NotFound from "./pages/NotFound";
@@ -58,6 +59,11 @@ const App = () => {
                 <Route path="/campaigns" element={
                   <ProtectedRoute>
                     <Campaigns />
+                  </ProtectedRoute>
+                } />
+                <Route path="/integrations" element={
+                  <ProtectedRoute>
+                    <Integrations />
                   </ProtectedRoute>
                 } />
                 <Route path="/admin" element={

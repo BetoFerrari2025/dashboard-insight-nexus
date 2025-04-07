@@ -100,3 +100,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Adicionar estilos para melhorar a aparência das abas */
+.tabs-underline [data-state="active"] {
+  @apply border-b-2 border-blue-500;
+}

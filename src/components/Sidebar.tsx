@@ -1,8 +1,34 @@
 
 import React from 'react';
-import { Home, BarChart2, ShoppingBag, Users, Settings, ChevronLeft, Flag, Shield } from 'lucide-react';
+import { 
+  Home, 
+  BarChart2, 
+  ShoppingBag, 
+  Users, 
+  Settings, 
+  ChevronLeft, 
+  Flag, 
+  Shield, 
+  Link, 
+  CodesandboxIcon, 
+  LayoutDashboard, 
+  Puzzle, 
+  Ruler, 
+  Percent, 
+  DollarSign, 
+  FileText, 
+  Bell, 
+  CreditCard, 
+  User, 
+  Cog, 
+  Share2, 
+  HeadphonesIcon, 
+  SmartphoneIcon, 
+  History, 
+  Activity 
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePermissions } from '@/hooks/usePermissions';
 
@@ -50,10 +76,10 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col h-[calc(100%-80px)] overflow-y-auto">
         <SidebarItem 
-          icon={Home} 
-          text="Dashboard" 
+          icon={LayoutDashboard} 
+          text="Resumo" 
           to="/" 
           active={location.pathname === '/'} 
           collapsed={collapsed} 
@@ -66,24 +92,115 @@ const Sidebar = () => {
           collapsed={collapsed} 
         />
         <SidebarItem 
-          icon={BarChart2} 
-          text="Analytics" 
-          to="/analytics" 
-          active={location.pathname === '/analytics'} 
+          icon={CodesandboxIcon} 
+          text="Google" 
+          to="/google" 
+          active={location.pathname === '/google'} 
           collapsed={collapsed} 
         />
         <SidebarItem 
-          icon={ShoppingBag} 
-          text="Produtos" 
-          to="/products" 
-          active={location.pathname === '/products'} 
+          icon={Link} 
+          text="UTMs" 
+          to="/utms" 
+          active={location.pathname === '/utms'} 
           collapsed={collapsed} 
         />
         <SidebarItem 
-          icon={Users} 
-          text="Clientes" 
-          to="/customers" 
-          active={location.pathname === '/customers'} 
+          icon={Puzzle} 
+          text="Integrações" 
+          to="/integrations" 
+          active={location.pathname.startsWith('/integrations')} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Ruler} 
+          text="Regras" 
+          to="/rules" 
+          active={location.pathname === '/rules'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Percent} 
+          text="Taxas" 
+          to="/taxes" 
+          active={location.pathname === '/taxes'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={DollarSign} 
+          text="Despesas" 
+          to="/expenses" 
+          active={location.pathname === '/expenses'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={FileText} 
+          text="Relatórios" 
+          to="/reports" 
+          active={location.pathname === '/reports'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Bell} 
+          text="Notificações" 
+          to="/notifications" 
+          active={location.pathname === '/notifications'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={CreditCard} 
+          text="Assinatura" 
+          to="/subscription" 
+          active={location.pathname === '/subscription'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={User} 
+          text="Minha conta" 
+          to="/account" 
+          active={location.pathname === '/account'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Cog} 
+          text="Avançado" 
+          to="/advanced" 
+          active={location.pathname === '/advanced'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Share2} 
+          text="Indique e Ganhe 10%" 
+          to="/refer" 
+          active={location.pathname === '/refer'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={HeadphonesIcon} 
+          text="Suporte" 
+          to="/support" 
+          active={location.pathname === '/support'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={SmartphoneIcon} 
+          text="Aplicativo" 
+          to="/app" 
+          active={location.pathname === '/app'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={History} 
+          text="Retrospectiva" 
+          to="/retrospective" 
+          active={location.pathname === '/retrospective'} 
+          collapsed={collapsed} 
+        />
+        <SidebarItem 
+          icon={Activity} 
+          text="Status" 
+          to="/status" 
+          active={location.pathname === '/status'} 
           collapsed={collapsed} 
         />
         
@@ -96,14 +213,6 @@ const Sidebar = () => {
             collapsed={collapsed} 
           />
         )}
-        
-        <SidebarItem 
-          icon={Settings} 
-          text="Configurações" 
-          to="/settings" 
-          active={location.pathname === '/settings'} 
-          collapsed={collapsed} 
-        />
       </div>
     </div>
   );
@@ -119,13 +228,13 @@ interface SidebarItemProps {
 
 const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to, active = false, collapsed = false }) => {
   return (
-    <Link to={to} className={cn(
-      "flex items-center px-4 py-3 cursor-pointer transition-colors",
+    <RouterLink to={to} className={cn(
+      "flex items-center px-4 py-2.5 cursor-pointer transition-colors text-sm",
       active ? "bg-blue-600" : "hover:bg-gray-700"
     )}>
-      <Icon className="h-5 w-5" />
-      {!collapsed && <span className="ml-3">{text}</span>}
-    </Link>
+      <Icon className="h-5 w-5 min-w-5" />
+      {!collapsed && <span className="ml-3 whitespace-nowrap overflow-hidden text-ellipsis">{text}</span>}
+    </RouterLink>
   );
 };
 
