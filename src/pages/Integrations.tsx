@@ -86,7 +86,7 @@ const Integrations = () => {
           <TabsContent value="anuncios" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Meta Ads Block */}
-              <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+              <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg flex items-center gap-2 text-white">
                     <img src="https://cdn.cdnlogo.com/logos/m/35/meta.svg" alt="Meta Logo" className="w-8 h-8 rounded-full" />
@@ -113,7 +113,7 @@ const Integrations = () => {
               </Card>
               
               {/* Google Ads Block */}
-              <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+              <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-lg flex items-center gap-2 text-white">
                     <img src="https://www.gstatic.com/images/branding/product/2x/ads_48dp.png" alt="Google Ads Logo" className="w-8 h-8" />
@@ -142,7 +142,7 @@ const Integrations = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Meta Accounts List */}
-              <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+              <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
                 <CardHeader className="pb-2 border-b border-[#3d4a6a]">
                   <CardTitle className="text-lg text-white">Contas de Anúncio (Meta)</CardTitle>
                 </CardHeader>
@@ -166,7 +166,7 @@ const Integrations = () => {
               </Card>
               
               {/* Google Accounts List */}
-              <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+              <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
                 <CardHeader className="pb-2 border-b border-[#3d4a6a]">
                   <CardTitle className="text-lg text-white">Contas de Anúncio (Google)</CardTitle>
                 </CardHeader>
@@ -180,7 +180,7 @@ const Integrations = () => {
           </TabsContent>
           
           <TabsContent value="webhooks">
-            <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+            <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
               <CardContent className="pt-6">
                 <p className="text-gray-300">Configurações de Webhooks estarão disponíveis em breve.</p>
               </CardContent>
@@ -188,7 +188,7 @@ const Integrations = () => {
           </TabsContent>
           
           <TabsContent value="utms">
-            <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+            <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
               <CardContent className="pt-6">
                 <p className="text-gray-300">Configurações de UTMs estarão disponíveis em breve.</p>
               </CardContent>
@@ -196,7 +196,7 @@ const Integrations = () => {
           </TabsContent>
           
           <TabsContent value="pixel">
-            <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+            <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
               <CardContent className="pt-6">
                 <p className="text-gray-300">Configurações de Pixel estarão disponíveis em breve.</p>
               </CardContent>
@@ -204,7 +204,7 @@ const Integrations = () => {
           </TabsContent>
           
           <TabsContent value="whatsapp">
-            <Card className="bg-[#273149] border-[#3d4a6a] shadow-lg">
+            <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
               <CardContent className="pt-6">
                 <p className="text-gray-300">Configurações de Whatsapp estarão disponíveis em breve.</p>
               </CardContent>

@@ -29,11 +29,11 @@ const Dashboard = () => {
       
       {/* Main Metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Faturamento Líquido
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -41,11 +41,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Gastos com anúncios
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -53,11 +53,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               ROAS
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -65,11 +65,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Lucro
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -84,11 +84,11 @@ const Dashboard = () => {
           <PaymentChart />
         </div>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Vendas Pendentes
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -96,11 +96,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Margem
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -108,11 +108,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               CPA
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -123,11 +123,11 @@ const Dashboard = () => {
 
       {/* Third row metrics */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Custos de Produto
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -135,11 +135,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               ROI
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -147,11 +147,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               ARPU
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -159,11 +159,11 @@ const Dashboard = () => {
           </CardContent>
         </Card>
         
-        <Card className="bg-white shadow-sm">
+        <Card className="bg-white dark:bg-[#273149] shadow-sm">
           <CardHeader className="pb-2 flex flex-row items-center justify-between space-y-0 pt-4">
-            <CardTitle className="text-sm text-gray-500 flex items-center gap-1">
+            <CardTitle className="text-sm text-gray-500 dark:text-gray-300 flex items-center gap-1">
               Taxas
-              <Info className="h-4 w-4 text-gray-400" />
+              <Info className="h-4 w-4 text-gray-400 dark:text-gray-400" />
             </CardTitle>
           </CardHeader>
           <CardContent>
