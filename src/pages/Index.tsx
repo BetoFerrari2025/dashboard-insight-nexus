@@ -19,7 +19,7 @@ const Dashboard = () => {
   } = usePermissions();
   return <>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-xl font-semibold text-slate-950">Resumo</h1>
+        <h1 className="text-xl font-semibold text-marketing-dark dark:text-white">Resumo</h1>
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-500">Atualizado há 1 minuto</span>
           <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm">
