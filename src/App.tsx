@@ -10,7 +10,8 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Dashboard from "@/pages/Dashboard";
 import Campaigns from "@/pages/Campaigns";
-import Integrations from "@/pages/Integrations"; // Nova importação
+import Integrations from "@/pages/Integrations";
+import Products from "@/pages/Products"; // Nova importação
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import NotFound from "./pages/NotFound";
@@ -64,6 +65,11 @@ const App = () => {
                 <Route path="/integrations" element={
                   <ProtectedRoute>
                     <Integrations />
+                  </ProtectedRoute>
+                } />
+                <Route path="/products" element={
+                  <ProtectedRoute>
+                    <Products />
                   </ProtectedRoute>
                 } />
                 <Route path="/admin" element={

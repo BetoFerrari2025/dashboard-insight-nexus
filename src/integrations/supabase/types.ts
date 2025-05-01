@@ -9,6 +9,27 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      produtos: {
+        Row: {
+          custo: number | null
+          id: string
+          nome: string
+          preco: number
+        }
+        Insert: {
+          custo?: number | null
+          id?: string
+          nome: string
+          preco: number
+        }
+        Update: {
+          custo?: number | null
+          id?: string
+          nome?: string
+          preco?: number
+        }
+        Relationships: []
+      }
       system_permissions: {
         Row: {
           created_at: string
@@ -57,9 +78,54 @@ export type Database = {
         }
         Relationships: []
       }
+      vendas: {
+        Row: {
+          data: string | null
+          forma_pagamento: string | null
+          id: string
+          produto_id: string | null
+          status: string | null
+          valor: number
+        }
+        Insert: {
+          data?: string | null
+          forma_pagamento?: string | null
+          id?: string
+          produto_id?: string | null
+          status?: string | null
+          valor: number
+        }
+        Update: {
+          data?: string | null
+          forma_pagamento?: string | null
+          id?: string
+          produto_id?: string | null
+          status?: string | null
+          valor?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vendas_produto_id_fkey"
+            columns: ["produto_id"]
+            isOneToOne: false
+            referencedRelation: "produtos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
-      [_ in never]: never
+      resumo_vendas: {
+        Row: {
+          custo_total: number | null
+          faturamento: number | null
+          lucro: number | null
+          margem: number | null
+          produto: string | null
+          total_vendas: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       is_admin: {
