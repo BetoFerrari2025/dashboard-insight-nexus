@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -5,14 +6,14 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BarChart3, LayoutDashboard, Package, Layers, PlugZap, Menu, X } from 'lucide-react';
-import { useMobileOrTablet } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Sidebar = () => {
-  const isMobileOrTablet = useMobileOrTablet();
+  const isMobile = useIsMobile();
   const [open, setOpen] = useState<boolean>(false);
   
   const handleLinkClick = () => {
-    if (isMobileOrTablet && open) {
+    if (isMobile && open) {
       setOpen(false);
     }
   };
@@ -107,7 +108,7 @@ const Sidebar = () => {
     </div>
   );
   
-  if (isMobileOrTablet) {
+  if (isMobile) {
     return (
       <>
         <Sheet open={open} onOpenChange={setOpen}>
