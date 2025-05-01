@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
-import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell, TableFooter } from '@/components/ui/table';
+import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from '@/components/ui/table';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Info } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 type Campaign = {
   id: string;
@@ -154,47 +152,46 @@ export const CampaignTable = () => {
 
   return (
     <div className="border rounded-md">
-      {/* Main scrollable area for the table rows */}
-      <ScrollArea className="h-[480px]">
-        <div className="min-w-[1200px]"> {/* Enforce minimum width to enable horizontal scrolling */}
+      <div className="overflow-x-auto">
+        <div className="min-w-max"> {/* Force horizontal scrolling */}
           <Table>
             <TableHeader>
               <TableRow className="bg-gray-50">
-                <TableCell className="w-10 sticky top-0 bg-gray-50 z-10">
+                <TableHead className="w-10 sticky left-0 bg-gray-50 z-20">
                   <Checkbox />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">STATUS</TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10 min-w-[250px]">CAMPANHA</TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">ORÇAMENTO</TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10">GASTOS</TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 sticky top-0 bg-gray-50 z-10 text-center">VENDAS</TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 sticky left-[41px] bg-gray-50 z-20">STATUS</TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 sticky left-[125px] bg-gray-50 z-20 min-w-[250px]">CAMPANHA</TableHead>
+                <TableHead className="font-medium text-xs text-gray-600">ORÇAMENTO</TableHead>
+                <TableHead className="font-medium text-xs text-gray-600">GASTOS</TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 text-center">VENDAS</TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   ROI <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   CPA <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   FATURAMENTO <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   LUCRO <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   ROAS <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
-                <TableCell className="font-medium text-xs text-gray-600 flex items-center sticky top-0 bg-gray-50 z-10 border-l border-gray-200">
+                </TableHead>
+                <TableHead className="font-medium text-xs text-gray-600 flex items-center border-l border-gray-200">
                   MARGEM <Info className="h-4 w-4 ml-1 text-gray-400" />
-                </TableCell>
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {campaigns.map((campaign) => (
                 <TableRow key={campaign.id} className="border-b">
-                  <TableCell>
+                  <TableCell className="sticky left-0 bg-white z-10">
                     <Checkbox />
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="sticky left-[41px] bg-white z-10">
                     <div className="flex justify-center">
                       <Switch 
                         checked={campaign.status === 'active'} 
@@ -203,7 +200,7 @@ export const CampaignTable = () => {
                       />
                     </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="sticky left-[125px] bg-white z-10">
                     <div className="flex flex-col">
                       <span className="font-medium text-sm">{campaign.name}</span>
                       {campaign.isTracking && (
@@ -217,30 +214,30 @@ export const CampaignTable = () => {
                   <TableCell>{campaign.budget}</TableCell>
                   <TableCell>{campaign.expenses}</TableCell>
                   <TableCell className="text-center">{campaign.sales}</TableCell>
-                  <TableCell className={`${campaign.roi >= '2.0' ? 'text-green-500' : ''} border-l border-gray-200`}>{campaign.roi}</TableCell>
+                  <TableCell className={`${parseFloat(campaign.roi) >= 2.0 ? 'text-green-500' : ''} border-l border-gray-200`}>{campaign.roi}</TableCell>
                   <TableCell className="border-l border-gray-200">{campaign.cpa}</TableCell>
                   <TableCell className="border-l border-gray-200">{campaign.revenue}</TableCell>
                   <TableCell className={`${parseFloat(campaign.profit.replace('R$ ', '').replace(',', '.')) > 0 ? 'text-green-500' : ''} border-l border-gray-200`}>
                     {campaign.profit}
                   </TableCell>
-                  <TableCell className={`${campaign.roas >= '2.0' ? 'text-green-500' : ''} border-l border-gray-200`}>{campaign.roas}</TableCell>
+                  <TableCell className={`${parseFloat(campaign.roas) >= 2.0 ? 'text-green-500' : ''} border-l border-gray-200`}>{campaign.roas}</TableCell>
                   <TableCell className="text-green-500 border-l border-gray-200">{campaign.margin}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </div>
-      </ScrollArea>
+      </div>
       
       {/* Fixed footer with totals and horizontal scroll */}
       <div className="border-t overflow-x-auto">
-        <div className="min-w-[1200px]"> {/* Match the width with the table above */}
+        <div className="min-w-max"> {/* Match the width with the table above */}
           <Table>
             <TableBody>
               <TableRow className="bg-gray-50 font-medium">
-                <TableCell></TableCell>
-                <TableCell className="text-gray-600">N/A</TableCell>
-                <TableCell className="text-gray-600">38 CAMPANHAS</TableCell>
+                <TableCell className="sticky left-0 bg-gray-50 z-10"></TableCell>
+                <TableCell className="text-gray-600 sticky left-[41px] bg-gray-50 z-10">N/A</TableCell>
+                <TableCell className="text-gray-600 sticky left-[125px] bg-gray-50 z-10">38 CAMPANHAS</TableCell>
                 <TableCell>{totalRow.budget}</TableCell>
                 <TableCell>{totalRow.expenses}</TableCell>
                 <TableCell className="text-center">{totalRow.sales}</TableCell>
