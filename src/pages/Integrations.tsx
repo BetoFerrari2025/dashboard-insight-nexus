@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import UTMTracker from '@/components/UTMTracker';
 
 const Integrations = () => {
   const [metaName, setMetaName] = useState('');
@@ -188,11 +189,7 @@ const Integrations = () => {
           </TabsContent>
           
           <TabsContent value="utms">
-            <Card className="bg-white dark:bg-[#273149] border-[#3d4a6a] shadow-lg">
-              <CardContent className="pt-6">
-                <p className="text-gray-300">Configurações de UTMs estarão disponíveis em breve.</p>
-              </CardContent>
-            </Card>
+            <UTMTracker />
           </TabsContent>
           
           <TabsContent value="pixel">
