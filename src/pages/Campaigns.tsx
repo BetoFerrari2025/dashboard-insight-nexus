@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { CampaignTable } from '@/components/CampaignTable';
-import { Search, RefreshCw, Settings, ChevronUp, FileText } from 'lucide-react';
+import { Search, RefreshCw, Settings, ChevronUp, FileText, Filter } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Campaigns = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -20,30 +21,67 @@ const Campaigns = () => {
   return (
     <>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-marketing-dark">Campanhas</h1>
+        <h1 className="text-2xl font-bold text-marketing-dark">Dashboard - Principal</h1>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Atualizado há 30 segundos</span>
-          <Button variant="default" className="bg-blue-600 hover:bg-blue-700">
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Atualizar
-          </Button>
+          <div className="flex items-center gap-1 text-blue-600">
+            <span className="text-sm">Prêmios</span>
+            <span className="text-sm">R$ 34.3K / R$ 1M</span>
+          </div>
         </div>
       </div>
 
-      {/* Status Indicator */}
-      <div className="flex items-center mb-6 gap-2">
-        <div className="bg-green-500 text-white text-xs rounded-full px-3 py-1">
-          Todas as vendas trackeadas
-        </div>
-        <div className="ml-auto flex items-center gap-2">
+      {/* Tabs */}
+      <Tabs defaultValue="campanhas" className="mb-6">
+        <TabsList className="w-full justify-start border-b rounded-none h-auto p-0">
+          <TabsTrigger 
+            value="contas" 
+            className="px-6 py-3 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+          >
+            Contas
+          </TabsTrigger>
+          <TabsTrigger 
+            value="campanhas" 
+            className="px-6 py-3 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+          >
+            Campanhas
+          </TabsTrigger>
+          <TabsTrigger 
+            value="conjuntos" 
+            className="px-6 py-3 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+          >
+            Conjuntos
+          </TabsTrigger>
+          <TabsTrigger 
+            value="anuncios" 
+            className="px-6 py-3 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 data-[state=active]:shadow-none"
+          >
+            Anúncios
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+
+      {/* Controls */}
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center gap-2">
           <Button variant="outline" size="icon">
             <Settings className="h-4 w-4" />
           </Button>
           <Button variant="outline" size="icon">
-            <ChevronUp className="h-4 w-4" />
+            <Filter className="h-4 w-4" />
           </Button>
           <Button variant="outline" size="icon">
             <FileText className="h-4 w-4" />
+          </Button>
+        </div>
+        
+        <div className="bg-green-500 text-white text-xs rounded-full px-3 py-1">
+          Todas as vendas trackeadas
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-500">Atualizado há 30 segundos</span>
+          <Button variant="default" className="bg-blue-600 hover:bg-blue-700">
+            Atualizar
           </Button>
         </div>
       </div>
@@ -135,12 +173,20 @@ const Campaigns = () => {
           </Select>
         </div>
       </div>
-      
-      <Separator className="my-4" />
 
       {/* Campaign Table */}
       <div className="mt-6">
         <CampaignTable />
+      </div>
+
+      {/* Footer with date info */}
+      <div className="mt-4 flex justify-end text-xs text-gray-500">
+        <div className="flex items-center gap-2">
+          <span>POR</span>
+          <span>16:00</span>
+          <span>PTB2</span>
+          <span>01/05/2025</span>
+        </div>
       </div>
     </>
   );
