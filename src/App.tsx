@@ -11,7 +11,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Dashboard from "@/pages/Dashboard";
 import Campaigns from "@/pages/Campaigns";
 import Integrations from "@/pages/Integrations";
-import Products from "@/pages/Products"; // Nova importação
+import Products from "@/pages/Products";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import NotFound from "./pages/NotFound";
@@ -77,6 +77,23 @@ const App = () => {
                     <Admin />
                   </ProtectedRoute>
                 } />
+                
+                {/* New routes for sidebar menu items */}
+                <Route path="/google" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/utms" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/rules" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/taxes" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/expenses" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/reports" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/notifications" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/subscription" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/account" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/advanced" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/referral" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/support" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/app" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/retrospective" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
+                <Route path="/status" element={<ProtectedRoute><NotFound /></ProtectedRoute>} />
                 
                 {/* Redirect to login for undefined routes */}
                 <Route path="*" element={<NotFound />} />

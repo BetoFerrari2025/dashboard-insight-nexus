@@ -5,28 +5,61 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { BarChart3, LayoutDashboard, Package, Layers, PlugZap, Menu, X } from 'lucide-react';
+import { 
+  Menu, 
+  X, 
+  LayoutDashboard, 
+  BarChart3, 
+  Package, 
+  Globe, 
+  FileCode, 
+  Cog, 
+  Landmark, 
+  Receipt, 
+  FileBarChart2, 
+  Bell,
+  CreditCard, 
+  User, 
+  Settings,
+  Share2,
+  LifeBuoy,
+  Smartphone,
+  Clock,
+  Activity
+} from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Sidebar = () => {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
   
   const handleLinkClick = () => {
     if (isMobile && open) {
       setOpen(false);
     }
   };
+
+  const toggleCollapse = () => {
+    setCollapsed(!collapsed);
+  };
   
   const SidebarContent = () => (
-    <div className="flex flex-col h-full p-4">
-      <div className="flex h-14 items-center px-4 py-2 border-b dark:border-gray-700 mb-4">
-        <h2 className="text-lg font-semibold text-marketing-dark dark:text-gray-100">CartZAP</h2>
+    <div className="flex flex-col h-full">
+      <div className="flex h-14 items-center px-4 py-2 border-b dark:border-gray-700 mb-4 justify-between">
+        <h2 className={cn("text-lg font-semibold text-marketing-dark dark:text-gray-100", collapsed && "hidden")}>CartZAP</h2>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={toggleCollapse} 
+          className="hover:bg-gray-100 dark:hover:bg-gray-800"
+        >
+          {collapsed ? <Menu size={16} /> : <X size={16} />}
+        </Button>
       </div>
       
-      <ScrollArea className="flex-1 w-full">
-        <div className="space-y-2">
-          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 py-2">PRINCIPAL</p>
+      <ScrollArea className="flex-1 w-full px-2">
+        <div className="space-y-1">
           <NavLink
             to="/"
             onClick={handleLinkClick}
@@ -38,7 +71,7 @@ const Sidebar = () => {
             }
           >
             <LayoutDashboard size={16} />
-            <span>Resumo</span>
+            {!collapsed && <span>Resumo</span>}
           </NavLink>
           
           <NavLink
@@ -52,11 +85,11 @@ const Sidebar = () => {
             }
           >
             <BarChart3 size={16} />
-            <span>Campanhas</span>
+            {!collapsed && <span>Campanhas</span>}
           </NavLink>
 
           <NavLink
-            to="/products"
+            to="/google"
             onClick={handleLinkClick}
             className={({ isActive }) =>
               cn(
@@ -65,12 +98,12 @@ const Sidebar = () => {
               )
             }
           >
-            <Package size={16} />
-            <span>Produtos</span>
+            <Globe size={16} />
+            {!collapsed && <span>Google</span>}
           </NavLink>
-          
+
           <NavLink
-            to="/layers"
+            to="/utms"
             onClick={handleLinkClick}
             className={({ isActive }) =>
               cn(
@@ -79,12 +112,10 @@ const Sidebar = () => {
               )
             }
           >
-            <Layers size={16} />
-            <span>Funil</span>
+            <FileCode size={16} />
+            {!collapsed && <span>UTMs</span>}
           </NavLink>
-          
-          <p className="text-xs font-medium text-gray-500 dark:text-gray-400 py-2 mt-6">CONFIGURAÇÕES</p>
-          
+
           <NavLink
             to="/integrations"
             onClick={handleLinkClick}
@@ -95,16 +126,198 @@ const Sidebar = () => {
               )
             }
           >
-            <PlugZap size={16} />
-            <span>Integrações</span>
+            <Cog size={16} />
+            {!collapsed && <span>Integrações</span>}
           </NavLink>
-          
-          {/* Version tag at the bottom */}
-          <div className="absolute bottom-4 left-4 text-xs text-gray-500 dark:text-gray-400">
-            v1.0.0
-          </div>
+
+          <NavLink
+            to="/rules"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Settings size={16} />
+            {!collapsed && <span>Regras</span>}
+          </NavLink>
+
+          <NavLink
+            to="/taxes"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Landmark size={16} />
+            {!collapsed && <span>Taxas</span>}
+          </NavLink>
+
+          <NavLink
+            to="/expenses"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Receipt size={16} />
+            {!collapsed && <span>Despesas</span>}
+          </NavLink>
+
+          <NavLink
+            to="/reports"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <FileBarChart2 size={16} />
+            {!collapsed && <span>Relatórios</span>}
+          </NavLink>
+
+          <NavLink
+            to="/notifications"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Bell size={16} />
+            {!collapsed && <span>Notificações</span>}
+          </NavLink>
+
+          <NavLink
+            to="/subscription"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <CreditCard size={16} />
+            {!collapsed && <span>Assinatura</span>}
+          </NavLink>
+
+          <NavLink
+            to="/account"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <User size={16} />
+            {!collapsed && <span>Minha conta</span>}
+          </NavLink>
+
+          <NavLink
+            to="/advanced"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Settings size={16} />
+            {!collapsed && <span>Avançado</span>}
+          </NavLink>
+
+          <NavLink
+            to="/referral"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Share2 size={16} />
+            {!collapsed && <span>Indique e Ganhe 10%</span>}
+          </NavLink>
+
+          <NavLink
+            to="/support"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <LifeBuoy size={16} />
+            {!collapsed && <span>Suporte</span>}
+          </NavLink>
+
+          <NavLink
+            to="/app"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Smartphone size={16} />
+            {!collapsed && <span>Aplicativo</span>}
+          </NavLink>
+
+          <NavLink
+            to="/retrospective"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Clock size={16} />
+            {!collapsed && <span>Retrospectiva</span>}
+          </NavLink>
+
+          <NavLink
+            to="/status"
+            onClick={handleLinkClick}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-3 rounded-md px-3 py-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors",
+                isActive && "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50"
+              )
+            }
+          >
+            <Activity size={16} />
+            {!collapsed && <span>Status</span>}
+          </NavLink>
         </div>
       </ScrollArea>
+      
+      {/* Version tag at the bottom */}
+      <div className="p-4 text-xs text-gray-500 dark:text-gray-400 border-t dark:border-gray-700">
+        v1.0.0
+      </div>
     </div>
   );
   
@@ -114,7 +327,7 @@ const Sidebar = () => {
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="md:hidden">
-              {!open ? <Menu /> : <X />}
+              <Menu />
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-64 p-0 border-r dark:border-gray-700 bg-white dark:bg-[#273149]">
@@ -126,7 +339,10 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="hidden md:block w-64 border-r dark:border-gray-700 bg-white dark:bg-[#273149] transition-colors">
+    <div className={cn(
+      "transition-all duration-300 border-r dark:border-gray-700 bg-white dark:bg-[#273149]", 
+      collapsed ? "w-16" : "w-64"
+    )}>
       <SidebarContent />
     </div>
   );
