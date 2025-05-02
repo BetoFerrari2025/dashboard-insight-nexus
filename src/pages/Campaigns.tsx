@@ -12,7 +12,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { CampaignTable } from '@/components/CampaignTable';
 import { Search, RefreshCw, Settings, ChevronUp, FileText, Filter } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Campaigns = () => {
@@ -21,7 +20,7 @@ const Campaigns = () => {
   return (
     <>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-marketing-dark">Dashboard - Principal</h1>
+        <h1 className="text-2xl font-bold">Dashboard - Principal</h1>
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1 text-blue-600">
             <span className="text-sm">Prêmios</span>
@@ -79,7 +78,7 @@ const Campaigns = () => {
         </div>
         
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Atualizado há 30 segundos</span>
+          <span className="text-sm text-gray-500">Atualizado há 20 minutos</span>
           <Button variant="default" className="bg-blue-600 hover:bg-blue-700">
             Atualizar
           </Button>
@@ -166,9 +165,9 @@ const Campaigns = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="any">Qualquer</SelectItem>
-              <SelectItem value="product1">Bíblia para colorir</SelectItem>
-              <SelectItem value="product2">FABRICA LIMPEZA LUCRATIVA</SelectItem>
-              <SelectItem value="product3">Outros produtos</SelectItem>
+              <SelectItem value="product1">Produto 1</SelectItem>
+              <SelectItem value="product2">Produto 2</SelectItem>
+              <SelectItem value="product3">Produto 3</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -183,9 +182,9 @@ const Campaigns = () => {
       <div className="mt-4 flex justify-end text-xs text-gray-500">
         <div className="flex items-center gap-2">
           <span>POR</span>
-          <span>16:00</span>
+          <span>00:37</span>
           <span>PTB2</span>
-          <span>01/05/2025</span>
+          <span>02/05/2025</span>
         </div>
       </div>
     </>
