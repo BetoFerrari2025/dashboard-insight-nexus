@@ -107,61 +107,61 @@ export const CampaignTable = () => {
   };
 
   return (
-    <div className="border rounded-md">
+    <div className="border rounded-md bg-[#1A1F2C] text-gray-100">
       <div className="overflow-hidden">
         <div className="w-full">
           <div className="overflow-x-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
             <Table className="table-fixed">
               <TableHeader>
-                <TableRow className="bg-gray-50">
-                  <TableHead className="w-10 sticky left-0 bg-gray-50 z-20 border-r border-gray-300">
+                <TableRow className="bg-[#161B26]">
+                  <TableHead className="w-10 sticky left-0 bg-[#161B26] z-20 border-r border-gray-700">
                     <Checkbox />
                   </TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 sticky left-[41px] bg-gray-50 z-20 border-r border-gray-300">STATUS</TableHead>
-                  <TableHead className="font-medium text-xs text-gray-600 sticky left-[125px] bg-gray-50 z-20 min-w-[250px] border-r border-gray-300">CAMPANHA</TableHead>
-                  <TableHead className="w-32 font-medium text-xs text-gray-600 border-r border-gray-300">ORÇAMENTO</TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">GASTOS</TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 text-center border-r border-gray-300">VENDAS</TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 sticky left-[41px] bg-[#161B26] z-20 border-r border-gray-700">STATUS</TableHead>
+                  <TableHead className="font-medium text-xs text-gray-300 sticky left-[125px] bg-[#161B26] z-20 min-w-[250px] border-r border-gray-700">CAMPANHA</TableHead>
+                  <TableHead className="w-32 font-medium text-xs text-gray-300 border-r border-gray-700">ORÇAMENTO</TableHead>
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">GASTOS</TableHead>
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 text-center border-r border-gray-700">VENDAS</TableHead>
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      ROI <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      ROI <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      CPA <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      CPA <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-32 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-32 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      FATURAMENTO <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      FATURAMENTO <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      LUCRO <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      LUCRO <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      ROAS <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      ROAS <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-24 font-medium text-xs text-gray-600 border-r border-gray-300">
+                  <TableHead className="w-24 font-medium text-xs text-gray-300 border-r border-gray-700">
                     <div className="flex items-center">
-                      MARGEM <Info className="h-4 w-4 ml-1 text-gray-400" />
+                      MARGEM <Info className="h-4 w-4 ml-1 text-gray-500" />
                     </div>
                   </TableHead>
-                  <TableHead className="w-32 font-medium text-xs text-gray-600">VENDAS TOTAIS</TableHead>
+                  <TableHead className="w-32 font-medium text-xs text-gray-300">VENDAS TOTAIS</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {campaigns.map((campaign) => (
-                  <TableRow key={campaign.id} className="border-b">
-                    <TableCell className="sticky left-0 bg-white z-10 border-r border-gray-200">
+                  <TableRow key={campaign.id} className="border-b border-gray-700">
+                    <TableCell className="sticky left-0 bg-[#1A1F2C] z-10 border-r border-gray-700">
                       <Checkbox />
                     </TableCell>
-                    <TableCell className="sticky left-[41px] bg-white z-10 border-r border-gray-200">
+                    <TableCell className="sticky left-[41px] bg-[#1A1F2C] z-10 border-r border-gray-700">
                       <div className="flex justify-center">
                         <Switch 
                           checked={campaign.status === 'active'} 
@@ -170,22 +170,25 @@ export const CampaignTable = () => {
                         />
                       </div>
                     </TableCell>
-                    <TableCell className="sticky left-[125px] bg-white z-10 border-r border-gray-200">
+                    <TableCell className="sticky left-[125px] bg-[#1A1F2C] z-10 border-r border-gray-700">
                       <div className="font-medium text-xs">
                         {campaign.name.replace(/\[([^\]]+)\]/, (_, match) => (
-                          `[${match}]`
+                          <>
+                            <span className="text-gray-100">{campaign.name.split('[')[0]}</span>
+                            <span className="text-gray-400">[{match}]</span>
+                          </>
                         ))}
                       </div>
                     </TableCell>
-                    <TableCell className="text-xs border-r border-gray-200">{campaign.budget}</TableCell>
-                    <TableCell className="text-xs border-r border-gray-200">{campaign.expenses}</TableCell>
-                    <TableCell className="text-center text-xs border-r border-gray-200">{campaign.sales}</TableCell>
-                    <TableCell className="text-xs text-red-500 border-r border-gray-200">{campaign.roi}</TableCell>
-                    <TableCell className="text-xs border-r border-gray-200">{campaign.cpa}</TableCell>
-                    <TableCell className="text-xs border-r border-gray-200">{campaign.revenue}</TableCell>
-                    <TableCell className="text-xs text-red-500 border-r border-gray-200">{campaign.profit}</TableCell>
-                    <TableCell className="text-xs text-red-500 border-r border-gray-200">{campaign.roas}</TableCell>
-                    <TableCell className="text-xs border-r border-gray-200">{campaign.margin}</TableCell>
+                    <TableCell className="text-xs border-r border-gray-700">{campaign.budget}</TableCell>
+                    <TableCell className="text-xs border-r border-gray-700">{campaign.expenses}</TableCell>
+                    <TableCell className="text-center text-xs border-r border-gray-700">{campaign.sales}</TableCell>
+                    <TableCell className="text-xs text-red-400 border-r border-gray-700">{campaign.roi}</TableCell>
+                    <TableCell className="text-xs border-r border-gray-700">{campaign.cpa}</TableCell>
+                    <TableCell className="text-xs border-r border-gray-700">{campaign.revenue}</TableCell>
+                    <TableCell className="text-xs text-red-400 border-r border-gray-700">{campaign.profit}</TableCell>
+                    <TableCell className="text-xs text-red-400 border-r border-gray-700">{campaign.roas}</TableCell>
+                    <TableCell className="text-xs border-r border-gray-700">{campaign.margin}</TableCell>
                     <TableCell className="text-xs">{campaign.totalSales || ''}</TableCell>
                   </TableRow>
                 ))}
@@ -196,23 +199,23 @@ export const CampaignTable = () => {
       </div>
       
       {/* Fixed footer with totals and horizontal scroll */}
-      <div className="border-t bg-gray-50">
+      <div className="border-t border-gray-700 bg-[#161B26]">
         <div className="overflow-x-auto" style={{ overflowY: 'hidden', display: 'block', width: '100%', position: 'relative' }}>
           <Table>
             <TableBody>
-              <TableRow className="bg-gray-50 font-medium">
-                <TableCell className="sticky left-0 bg-gray-50 z-10 border-r border-gray-300"></TableCell>
-                <TableCell className="text-gray-600 sticky left-[41px] bg-gray-50 z-10 border-r border-gray-300">N/A</TableCell>
-                <TableCell className="text-gray-600 sticky left-[125px] bg-gray-50 z-10 text-xs border-r border-gray-300">6 CAMPANHAS</TableCell>
-                <TableCell className="text-xs border-r border-gray-300">{totalRow.budget}</TableCell>
-                <TableCell className="text-xs border-r border-gray-300">{totalRow.expenses}</TableCell>
-                <TableCell className="text-center text-xs border-r border-gray-300">{totalRow.sales}</TableCell>
-                <TableCell className="text-red-500 text-xs border-r border-gray-300">{totalRow.roi}</TableCell>
-                <TableCell className="text-xs border-r border-gray-300">{totalRow.cpa}</TableCell>
-                <TableCell className="text-xs border-r border-gray-300">{totalRow.revenue}</TableCell>
-                <TableCell className="text-red-500 text-xs border-r border-gray-300">{totalRow.profit}</TableCell>
-                <TableCell className="text-red-500 text-xs border-r border-gray-300">{totalRow.roas}</TableCell>
-                <TableCell className="text-xs border-r border-gray-300">{totalRow.margin}</TableCell>
+              <TableRow className="bg-[#161B26] font-medium">
+                <TableCell className="sticky left-0 bg-[#161B26] z-10 border-r border-gray-700"></TableCell>
+                <TableCell className="text-gray-300 sticky left-[41px] bg-[#161B26] z-10 border-r border-gray-700">N/A</TableCell>
+                <TableCell className="text-gray-300 sticky left-[125px] bg-[#161B26] z-10 text-xs border-r border-gray-700">6 CAMPANHAS</TableCell>
+                <TableCell className="text-xs border-r border-gray-700">{totalRow.budget}</TableCell>
+                <TableCell className="text-xs border-r border-gray-700">{totalRow.expenses}</TableCell>
+                <TableCell className="text-center text-xs border-r border-gray-700">{totalRow.sales}</TableCell>
+                <TableCell className="text-red-400 text-xs border-r border-gray-700">{totalRow.roi}</TableCell>
+                <TableCell className="text-xs border-r border-gray-700">{totalRow.cpa}</TableCell>
+                <TableCell className="text-xs border-r border-gray-700">{totalRow.revenue}</TableCell>
+                <TableCell className="text-red-400 text-xs border-r border-gray-700">{totalRow.profit}</TableCell>
+                <TableCell className="text-red-400 text-xs border-r border-gray-700">{totalRow.roas}</TableCell>
+                <TableCell className="text-xs border-r border-gray-700">{totalRow.margin}</TableCell>
                 <TableCell className="text-xs"></TableCell>
               </TableRow>
             </TableBody>
