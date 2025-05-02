@@ -174,7 +174,7 @@ const Campaigns = () => {
       </div>
 
       {/* Campaign Table */}
-      <div className="mt-6">
+      <div className="mt-6 overflow-hidden border rounded-md">
         <CampaignTable />
       </div>
 

@@ -110,7 +110,7 @@ export const CampaignTable = () => {
     <div className="border rounded-md">
       <div className="overflow-hidden">
         <div className="w-full">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
             <Table>
               <TableHeader>
                 <TableRow className="bg-gray-50">
@@ -196,8 +196,8 @@ export const CampaignTable = () => {
       </div>
       
       {/* Fixed footer with totals and horizontal scroll */}
-      <div className="border-t overflow-x-auto bg-gray-50">
-        <div className="min-w-max">
+      <div className="border-t bg-gray-50">
+        <div className="overflow-x-auto" style={{ overflowY: 'hidden', display: 'block', width: '100%', position: 'relative' }}>
           <Table>
             <TableBody>
               <TableRow className="bg-gray-50 font-medium">
@@ -218,6 +218,8 @@ export const CampaignTable = () => {
             </TableBody>
           </Table>
         </div>
+        {/* Add explicit scrollbar area with minimum width */}
+        <div className="w-full overflow-x-auto" style={{ minWidth: '100%', height: '8px' }}></div>
       </div>
     </div>
   );
